@@ -1,9 +1,12 @@
-# gradle build
+# Gradle
 /build
 .gradle/
 
-# eclipse config
+# Eclipse
 /bin
 .classpath
 .project
 .settings/
+
+# Tomcat
+*/work/
