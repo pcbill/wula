@@ -4,7 +4,7 @@ package wula;
 public class Main {
 
 	public static void main(String[] args) {
-		HttpServer httpServer = new HttpServer(8080);
+		new HttpServer(8080).init("webApp").startUp();
 	}
 	
 }
