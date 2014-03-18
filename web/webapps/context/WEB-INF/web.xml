@@ -19,15 +19,17 @@
 
     <servlet>
         <servlet-name>spring</servlet-name>
+        <!-- child application context config: {servletName}-servlet.xml  -->
         <servlet-class>
             org.springframework.web.servlet.DispatcherServlet
         </servlet-class>
-         <init-param>
-        	<description>This is used by SpringWS to dynamically convert WSDL urls</description> 
-			  <param-name>transformWsdlLocations</param-name>
-			  <param-value>true</param-value>
+        <!-- 
+        <init-param>
+	       	<description>This is used by SpringWS to dynamically convert WSDL urls</description> 
+			<param-name>transformWsdlLocations</param-name>
+			<param-value>true</param-value>
 		</init-param>
-		
+         -->
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -36,9 +38,15 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     
+    <!-- 
+      -- root application context config : applicationContext.xml
+      -- note: usually, just using DispatcherServlet application context config 
+      -->
+    <!--
     <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+     -->
 	
 	<welcome-file-list>
 	    <welcome-file>index.html</welcome-file>
