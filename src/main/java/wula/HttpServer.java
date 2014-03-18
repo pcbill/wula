@@ -12,30 +12,24 @@ public class HttpServer {
 
 	private Tomcat tomcat;
 	
+	
+	// doc path = web/webapps/context
 	private final String tomcatBaseDir = "web";
 	private final String webappsDir = "webapps";
 	private final String contextPathDir = "context";
 
-	public HttpServer(int port) {
+	public HttpServer(int port, String webapp) {
 			tomcat = new Tomcat();
 			tomcat.setPort(port);
 
 			configDirArchitecture();
+			setWebAppName(webapp);
 	}
 	
-	public HttpServer init(String contextPath) {
-		try {
 
-			tomcat.addWebapp("/"+contextPath, contextPathDir );
-			return this;
-
-		} catch (ServletException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
 	
 	public void startUp() {
+		
 		try {
 			
 			tomcat.start();
@@ -53,8 +47,7 @@ public class HttpServer {
 	
 	private void configDirArchitecture() {
 		try {
-		
-			
+
 			String	currentDir = new File(".").getCanonicalPath();
 			
 			String baseDir = currentDir + File.separatorChar + tomcatBaseDir;
@@ -65,6 +58,18 @@ public class HttpServer {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private HttpServer setWebAppName(String contextPath) {
+		try {
+
+			tomcat.addWebapp("/"+contextPath, contextPathDir );
+			return this;
+
+		} catch (ServletException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 
