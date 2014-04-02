@@ -22,9 +22,9 @@
 	  -- For example @Controller and @Service. Make sure to set the correct base-package
 	  -->
 	<!-- 
-	<context:component-scan base-package="twm.simStore.springmvc.controller"/> 
-	<context:component-scan base-package="twm.sdmp.service" />
-	<context:component-scan base-package="twm.sdmp.xml" />
+	<context:component-scan base-package="{controllerPackage}"/> 
+	<context:component-scan base-package="{servicePackage}"/> 
+	<context:component-scan base-package="{dao(Repository)Package}"/> 
 	 -->
 	
 	<!-- 
@@ -53,7 +53,6 @@
 	<!-- 
 	<import resource = "embedded-db-config.xml" />
 	<import resource = "mybatis-config.xml" />
-	<import resource = "dao-config.xml" />
 	<import resource = "cache-config.xml" />
 	 -->
 	
