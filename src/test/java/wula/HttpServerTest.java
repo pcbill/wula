@@ -5,6 +5,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import wula.http.HttpServer;
+
 public class HttpServerTest {
 
 	private HttpServer server;

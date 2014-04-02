@@ -1,4 +1,4 @@
-package wula;
+package wula.http;
 
 import java.io.File;
 import java.io.IOException;
