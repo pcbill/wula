@@ -39,8 +39,8 @@
     </servlet-mapping>
     
     <!-- 
-      -- root application context config : applicationContext.xml
-      -- note: usually, just using DispatcherServlet application context config 
+       root application context config : applicationContext.xml
+       note: usually, just using DispatcherServlet application context config 
       -->
     <!--
     <listener>
