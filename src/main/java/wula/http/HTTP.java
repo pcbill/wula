@@ -2,12 +2,14 @@ package wula.http;
 
 import java.io.IOException;
 import java.nio.charset.UnsupportedCharsetException;
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
@@ -16,11 +18,28 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HTTP {
-	private static final Logger log = LoggerFactory.getLogger(HTTP.class);
+	private  final Logger log = LoggerFactory.getLogger(HTTP.class);
 	
-	public static Document get(String url){
+	public  Response execute(Request request) {
+		try {
+			
+			return request.execute();
+			
+		} catch (ClientProtocolException e) {
+			log.error(e.getMessage(), e);
+			return null;
+		} catch (IOException e) {
+			log.error(new Date().getTime()+": "+e.getMessage());
+			return null;
+		}
+	}
+
+	
+	public  Document get(String url){
 		log.info("get url:"+url);
 		try {
 			
@@ -33,7 +52,7 @@ public class HTTP {
 
 	}
 	
-	public static Document post(String url, String postContent) {
+	public  Document post(String url, String postContent) {
 		try {
 			
 			Response response = Request.Post(url).bodyString(postContent,ContentType.create("text/plain", "UTF-8")).execute();
@@ -65,7 +84,7 @@ public class HTTP {
 		}	
 	}
 	
-	public static Document post(String url, Map<String,String> postContent) {
+	public  Document post(String url, Map<String,String> postContent) {
 		try 
 		{
 			return Jsoup.connect(url).data(postContent).post();

@@ -25,7 +25,9 @@
 	<context:component-scan base-package="{controllerPackage}"/> 
 	<context:component-scan base-package="{servicePackage}"/> 
 	<context:component-scan base-package="{dao(Repository)Package}"/> 
+	<context:component-scan base-package="{componentPackage}"/> 
 	 -->
+	<context:component-scan base-package="wula.http"/> 
 	
 	<!-- 
 	   Configures the annotation-driven Spring MVC Controller programming model.
