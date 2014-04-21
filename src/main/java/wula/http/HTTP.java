@@ -54,7 +54,7 @@ public class HTTP {
 	
 	public  Document post(String url, String postContent) {
 		try {
-			
+			log.info("post url:"+url+", content:"+postContent);
 			Response response = Request.Post(url).bodyString(postContent,ContentType.create("text/plain", "UTF-8")).execute();
 			return response.handleResponse(new ResponseHandler<Document>() {
 				@Override
